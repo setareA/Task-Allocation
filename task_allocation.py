@@ -32,8 +32,8 @@ def first_fit(available_id_cc, ram, cpu, type_of_cpu, filename):
             if found == 1:
                 break
 
-    ccc.execute('''UPDATE NODES SET ram = ram - ? AND cpu = cpu - ? WHERE id = ?''', (ram,cpu,final_answer_id))
-    ccc.execute('''UPDATE COMPUTING_CENTERS SET ram = ram - ? AND cpu = cpu - ? WHERE id = ?''', (ram, cpu, final_answer_foreign_id))
+    ccc.execute('''UPDATE NODES SET ram = ram - ?, cpu = cpu - ? WHERE id = ?''', (ram,cpu,final_answer_id))
+    ccc.execute('''UPDATE COMPUTING_CENTERS SET ram = ram - ?, cpu = cpu - ? WHERE id = ?''', (ram, cpu, final_answer_foreign_id))
 
     ccc.commit()
     ccc.close()
@@ -66,7 +66,7 @@ def best_fit(available_id_cc, ram, cpu, type_of_cpu, filename):
                 selected_cpu = row[3]
                 type = row[4]
 
-    cc.execute('''UPDATE NODES SET ram = ram - ? AND cpu = cpu - ? WHERE id = ?''', (ram, cpu, final_answer_id))
+    cc.execute('''UPDATE NODES SET ram = ram - ?, cpu = cpu - ? WHERE id = ?''', (ram, cpu, final_answer_id))
     cc.execute('''UPDATE COMPUTING_CENTERS SET ram = ram - ? AND cpu = cpu - ? WHERE id = ?''',
                 (ram, cpu, final_answer_foreign_id))
 
@@ -101,8 +101,8 @@ def worst_fit(available_id_cc, ram, cpu, type_of_cpu, filename):
                 selected_cpu = row[3]
                 type = row[4]
 
-    cworst.execute('''UPDATE NODES SET ram = ram - ? AND cpu = cpu - ? WHERE id = ?''', (ram, cpu, final_answer_id))
-    cworst.execute('''UPDATE COMPUTING_CENTERS SET ram = ram - ? AND cpu = cpu - ? WHERE id = ?''',
+    cworst.execute('''UPDATE NODES SET ram = ram - ?, cpu = cpu - ? WHERE id = ?''', (ram, cpu, final_answer_id))
+    cworst.execute('''UPDATE COMPUTING_CENTERS SET ram = ram - ?, cpu = cpu - ? WHERE id = ?''',
                 (ram, cpu, final_answer_foreign_id))
 
     cworst.commit()
