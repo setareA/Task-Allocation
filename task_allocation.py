@@ -67,7 +67,7 @@ def best_fit(available_id_cc, ram, cpu, type_of_cpu, filename):
                 type = row[4]
 
     cc.execute('''UPDATE NODES SET ram = ram - ?, cpu = cpu - ? WHERE id = ?''', (ram, cpu, final_answer_id))
-    cc.execute('''UPDATE COMPUTING_CENTERS SET ram = ram - ? AND cpu = cpu - ? WHERE id = ?''',
+    cc.execute('''UPDATE COMPUTING_CENTERS SET ram = ram - ?, cpu = cpu - ? WHERE id = ?''',
                 (ram, cpu, final_answer_foreign_id))
 
     cc.commit()
